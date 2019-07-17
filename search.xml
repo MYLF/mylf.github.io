@@ -1,6 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Java语言中的数据类型]]></title>
+    <url>%2F2019%2F07%2F17%2Fnote%2FJava%2F007%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%2F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%2F</url>
+    <content type="text"><![CDATA[Java语言中的数据类型1. 什么是数据类型 程序中具有很多数据，每一个数据都是由相关类型的，不同数据类型的数据占用的空间大小不同。 2. 数据类型的作用是什么？ 数据类型的作用是指导JVM在运行程序时给该数据分配多大的内存空间。 3. 数据类型的种类 Java中的数据类型包括两种 基本数据类型引用数据类型(以后再说) 字符串类接口数组… 4. 关于基本数据类型4.1 知识点内容补充 Java中的数字类型 Java中的数字都是有正负之分的,所以在数字的二进制当中有一个”符号位”,这个”符号位”在所有二进制位的最左边,0表示正数,1表示负数 Tips:Char和Boolean类型没有符号位 目前的计算机只能识别二进制，即10010010101… 什么是二进制？ 是一种数据的表示形式，采用满二进一原则 字节(byte)是什么？ 1 byte=8 bit，即1个字节=8个比特位，一个比特位表示一个二进制位(0/1) 常见储存单位换算参照表 1 Byte 8 Bit 1 KB 1024 Byte 1 MB 1024 KB 1GB 1024 MB 1 TB 1024 GB 4.2 基本数据类型的细分 基本数据类型包括四大类八小种 整数型 byte,short,int,long 浮点型 float,double 布尔型 boolean 字符型 char 八种数据类型所占用的空间大小 基本数据类型 占用空间大小(字节) 取值范围 byte 1 -128 ~ 127 short 2 -32768 ~ 32767 int 4 -2147483648 ~ 2147483647 long 8 (-2^63) ~ (2^63-1) float 4 (1.4E-45) ~ 3.4028235E38 double 8 (4.9E-324) ~ 1.7976931348623157E308 boolean 1 true/false char 2 0 ~ (2^16-1) 4.3 基本数据的默认值 什么是基本数据的默认值？ 当成员变量没有进行赋值时，系统根据数据类型自动赋予的值被称为默认值Tips:八种基本数据类型默认值一切向零看齐(Boolean类型中False在C语言中代表0,True代表1) 基本数据类型 默认值 Byte,Short,Int,Long 0 Float,Double 0.0 Boolean false (0) Char \u0000 4.4 知识点拓展 字符编码 八种数据类型中,Byte,Short,Int,Long,Float,Double,Boolean这七种数据类型计算机表示时相对容易,因为底层对应的都是数字,十进制的数字和二进制数字之间存在一种固定的转换规则.但是这八种基本数据类型中Char表示的是现实世界的文字,文字和计算机之间默认情况下是不存在任何转换关系的.为了使计算机可以表示现实世界当中的文字,我们需要进行认为的干涉,需要人提前制定好”文字”与”二进制”之间的转换关系,这种对照转换关系被称为”字符编码” 字符编码的发展史 计算机最初只支持英文,最先出现的字符编码是ASCII码(采用一个字节编码) ASCII码中部分字符编码对应字符‘a’ —&gt; 97‘A’ —&gt; 65‘0’ —&gt; 49 随着计算机的发展，后来出现了一种编码方式，是由国际化标准组织指定的，这种编码方式支持西欧语言，并且向上兼容ASCII码，但是仍然不支持中文，这种编码方式为:ISO 8859-1(Latin-1) 随着计算机向亚洲发展,计算机开始支持中文，日文，韩文等国家文字，其中支持简体中文的编码方式有（按照容量从小到大排序） GB2312GBKGB18030 支持繁体中文大的编码有 大五码(Big5) 再后来，出现了统一全球语言的编码，容量较大，我们将其称之为Unicode，这种编码有多种具体的实现方式 UTF-8UTF-16UTF-32…… Tips:Java语言因为采用了Unicode编码，所以我们可以在Java语言中使用Unicode所支持语言的字符(包括但不限于中/英文) 在Java语言实际开发中使用UTF-8较多(统一编码方式) 编码与解码 编码 :将二进制按照字符编码转换为文字的过程解码 :将文字按照编码表转换为二进制的过程 特殊情况 当编码与解码时采用同一套编码表,不会出现问题当编码与解码时采用不同编码表,有几率出现乱码 5. 转义字符 当你把\与一些字符一起使用时，就构成了转义字符，常见的转义字符有 \n 换行符\t 制表符(即键盘上的Tab键，注意，有时制表符看起来和空格键效果相同，但实际作用不同，因为他们所对应的ASCII码不一样) 本文代码示例123456public class DataType&#123; static int i; //进行成员变量声明 public static void main(String[] args)&#123; System.out.println(i); //打印输出变量i的值 &#125;&#125; 12345678910111213public class DataType02&#123; public static void main(String[] args)&#123; char i = '\n'; //声明并为变量i赋值 System.out.print("Hello"); System.out.print(i); //打印输出转义字符\n System.out.print("World"); System.out.print(i); i = '\t'; //为变量i赋值 System.out.print("Hello"); System.out.print(i); //打印输出转义字符\t System.out.print("World"); &#125;&#125; 123456789public class DataTypeChar&#123; public static void main(String[] args)&#123; char i = 'B'; System.out.println(i); i = '嗨'; //一个中文占用两个字节，所以Java中的char类型可以储存一个中文 System.out.println(i); &#125;&#125;]]></content>
+      <categories>
+        <category>学习笔记</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java语言中的变量]]></title>
+    <url>%2F2019%2F07%2F17%2Fnote%2FJava%2F006%E5%8F%98%E9%87%8F%2F%E5%8F%98%E9%87%8F%2F</url>
+    <content type="text"><![CDATA[Java语言中的变量1. 什么是变量？ 变量本质上来说是内存中的一块空间，这块空间有数据类型，有名字，有字面值。 变量包含三个部分:数据类型，名称，字面值变量是内存中存储数据的最基本的单元 2. 变量的作用 有了变量以后一块内存空间可以得到重复利用 3. 数据类型有什么作用？ 不同的数据有不同的类型，不同的数据类型底层会分配不同大小的空间数据类型指导程序在运行阶段应该分配多大的内存空间 4. 变量要求 变量中具体存储的数据必须和变量的数据类型一致，否则在编译阶段会出现报错 5. 变量该如何声明/定义？ 按照格式即可 首先，我们要进行变量声明数据类型 变量名;如int size;这里的int为数据类型(整数型)，size为变量名，只有进行过变量声明，我们才能进行赋值变量名 = 数据值;如 size = 100 ;这里的等号是一个运算符，在进行赋值的时候会先运行等号右边的表达式，表达式执行结束以后才会赋值给左边的变量。 Tips:1.变量的声明和赋值可以一起进行int size = 100;2.变量在一行中可以声明多个int a,b,c,d; 注意：这里虽然对a,b,c变量进行了声明,但是只对变量c进行了赋值，如果要使用变量a,b,那么还需要进行赋值！ 变量赋值过后可以重新赋值在同一个作用域当中，一个变量只可以声明一次，并且变量不可重名！在不同作用域中可以重名！ 6. 变量的访问方式 Java中的变量必须先声明赋值过后才能够访问 如果只进行声明而不进行赋值，实际上变量并没有初始化，内存空间也没有被开辟出来,所以在进行赋值之前是无法访问的！ 一般情况下，变量有两种访问方式，他们分别是; 读取变量中保存的数据 /get 读取数据修改变量中保存的数据 /set 修改数据 7.Java语言代码的执行 Java语言中在方法体里的代码是自上往下逐行执行的，当上一行没有执行完毕之前，下一行永远不会执行 8.变量的作用域 什么是作用域？ 变量的作用域，就是变量的有效范围，只要出了这个范围该变量就无法访问了。 Tips:如果在for循环中申明变量，那么该变量的有效范围仅在for循环中，循环结束后就无法访问了 一句话速记：出了大括号就不认识了 9.变量的分类 根据变量声明的位置，可以将变量分类 局部变量 在方法体中声明的变量叫做局部变量 成员变量 在方法体外，类体之内声明的变量叫做成员变量 Java变量是具有优先级的，全局变量优先级大于成员变量 本文代码示例123456789101112public class Var01&#123; public static void main(String[] args)&#123; int i = 10; //申明变量i并且为i赋值为10,使变量i初始化，完成内存空间的开辟 System.out.println(i); //输出变量i的值 i = 20; //为变量i赋值为20 System.out.println(i); //再次输出变量i的值 i = i+20; //为变量i赋值为旧的i的值加上20 System.out.println(i); //再次输出i的值 &#125;&#125; 12345678910public class Var02&#123; public static void main(String[] args)&#123; int a,b,c = 20; //声明变量a,b,c，但是只对c进行了初始化,赋值并且开辟内存空间 a = 20; //为变量a进行初始化，赋值并且开辟内存空间 b = 20; //为变量b进行初始化，赋值并且开辟内存空间 System.out.println(a); System.out.println(b); System.out.println(c); //打印输出a，b，c的值 &#125;&#125; 1234567891011121314public class Var03&#123; //这里的static不可以去除 static int a = 20; public static void main(String[] args)&#123; //main方法的作用域从此处开始 int i = 10; System.out.println(i); System.out.println(a); &#125; //main方法的作用域到这里结束 public static void doSome()&#123; //这里无法访问i变量，但是可以访问k变量 System.out.println(a); &#125;&#125; 123456public class Var04&#123; int a = 10; //此处a为成员变量 public static void main(String[] args)&#123; int i = 10; //此处i为局部变量 &#125;&#125;]]></content>
+      <categories>
+        <category>学习笔记</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java语言中的字面值]]></title>
+    <url>%2F2019%2F07%2F17%2Fnote%2FJava%2F005%E5%AD%97%E9%9D%A2%E5%80%BC%2F%E5%AD%97%E9%9D%A2%E5%80%BC%2F</url>
+    <content type="text"><![CDATA[字面值 字面值就是数据字面值是Java源程序的组成部分之一，包括标识符和关键字，他们都是Java程序的组成部分. 数据在编程语言中是分门别类的 10,100等属于整数型字面值3.14，6.28等属于浮点型true和false属于布尔值（布尔型字面值）“abc” “你好”等属于字符串（字符串型字面值） ‘a’ ‘天’灯属于字符（字符型字面值） Java语言中所有的字符串都需要使用””括起来 （半角双引号) Java语言中的字符都需要使用’’括起来（半角单引号）Java中的字面值会占用一定的内存空间，有些时候可以使用变量来替代直接使用字面值来达到节省内存占用的效果字面值是变量的一部分 本文示例代码1234567891011121314//本示例演示不同类型关键字在Java语言中的运用public class Const &#123; public static void main(String[] args)&#123; System.out.println(1); System.out.println(3.14); System.out.println(true); System.out.println("ABC"); System.out.println('a'); &#125;&#125;]]></content>
+      <categories>
+        <category>学习笔记</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java语言中的关键字]]></title>
+    <url>%2F2019%2F07%2F17%2Fnote%2FJava%2F004%E5%85%B3%E9%94%AE%E5%AD%97%2F%E5%85%B3%E9%94%AE%E5%AD%97%2F</url>
+    <content type="text"><![CDATA[Java关键字 什么是关键字？ 关键字是SUN公司在开发Java语言的时候，提前定制好的一些具有特定含义的字符，这些字符构成Java程序的骨架。他们是需要记住的，不可以随意编写，需要区分大小写。 关键词在Java语言中全部为小写关键词在一般的支持语法高亮的文本编辑工具中常为蓝色高亮 常见的关键词有哪些？ public class static void if for while do default byte short int long float double boolean char private protected switch true false throw throws try catch ….]]></content>
+      <categories>
+        <category>学习笔记</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java语言中的标识符]]></title>
+    <url>%2F2019%2F07%2F17%2Fnote%2FJava%2F003%E6%A0%87%E8%AF%86%E7%AC%A6%2F%E6%A0%87%E8%AF%86%E7%AC%A6%2F</url>
+    <content type="text"><![CDATA[Java语言中的标识符1. 什么是标识符 在Java程序中程序员可以自行命名的单词都是标识符标识符一般在编辑器中以默认颜色显示 标识符可以标识什么元素？ 类名方法名变量名接口名常量名 … 2. 标识符的命名规则 如果不按照规则来会发生什么事情？ 编译器会报错 标识符由什么组成？ 标识符只能由数字 ,字母 ,下划线_以及美元符号$构成 ,不能使用除以上以外的其他特殊字符 ! 标识符命名时需要注意什么？ 标识符虽然可以含有数字 , 但是不能以数字开头 !标识符需要严格区分大小写关键字不能作为标识符标识符理论上没有长度限制，但是最好不要使用过长的标识符 什么是关键字？ 参考下一章节！ 3. 标识符的命名规范 什么是标识符的规范？ 规范是一种格式 , 不属于语法，规范是为了方便他人阅读你的代码。 不遵守规范会怎样？编译器会报错么？ 不遵守规范编译器不会报错，不遵守规范只会增加你的代码的阅读难度，不会带来其他影响会导致阅读你的代码的人吐槽你水平低，没经验 规范命名有什么特点？ 最好可以做到见名知意 (不要整天使用a，b或者只有你能看懂的单词来命名)遵守驼峰名令方式（为命名加上大小写,以方便区分） 类名和接口名：首字母大写，后面每个单词首字母也要大写。变量名，方法名：首字母小写，后面每个单词首字母大写常量名：全部大写 正确命名示范 123456 public class UserService&#123; //根据类名可知这是一个用户服务类 public void login(String UserName,string PassWord)&#123; //根据命名可知这是一个登录项目的代码 &#125;&#125; 本文示例代码123456public class Identifier&#123; //main是一个方法名 public static void main(String[] args)&#123;//args是一个变量名 &#125;&#125;]]></content>
+      <categories>
+        <category>学习笔记</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java语言中Pubilc class与class的区别]]></title>
+    <url>%2F2019%2F07%2F17%2Fnote%2FJava%2F002.PublicClass%E4%B8%8Eclass%E7%9A%84%E5%8C%BA%E5%88%AB%2FPublic%20class%E4%B8%8Eclass%20%2F</url>
+    <content type="text"><![CDATA[Public class与class 一个Java文件中可以定义多个class，并且会生成所对应每个class的.class文件 一个Java文件中可以没有public class public class的名字必须要和Java源文件名字一致，并且每个java源文件中只能有一个 每一个class里面都可以设置main方法，都可以设置程序入口 如果一个class中没有main,则运行时会报错 本文代码示例 12345678910111213//这是一个例子//用于演示当一个Java文件中存在多个class会发生什么事情class examplea&#123; &#125;class exampleb&#123; &#125;class examplec&#123; &#125; 12345//Public class的声明办法public class pc&#123; &#125;//public class名必须和文件名一致]]></content>
+      <categories>
+        <category>学习笔记</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java语言HelloWorld注解]]></title>
+    <url>%2F2019%2F07%2F17%2Fnote%2FJava%2F001.HelloWorld%E8%A7%A3%E9%87%8A%2FHelloWorld%2F</url>
+    <content type="text"><![CDATA[代码示例 123456789101112131415161718192021222324252627282930/* public表示公开 * class表示定义一个类 * HelloWorld为类名 */public class HelloWorld&#123; //申明一个名为HelloWorld的公开类 //类中除申明变量外不允许写其他Java语句,否则会编译报错 //这是一个类体 /* * public表示公开 * static表示静态 * void表示留空 * main为方法名 * (String[] args)表示main方法的参数列表 * args为名字,可以随意修改 */ //以下为程序的主方法,是程序执行的入口,是由Sun公司规定的一种固定编写方式 public static void main(String[] args)&#123; //定义一个公开静态主方法 //这是一个方法体 // System.out.println("TEXT"); System.out.println("Hello World");/* 向控制台输出HelloWorld 这里的双引号必须为半角符号 Java语句结束时必须加入分号【 ; 】 */ System.out.print("Hello"); System.out.print(" World!"); //print和println的区别在于print不会换行，println会换行 &#125;&#125;]]></content>
+      <categories>
+        <category>学习笔记</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java学习准备内容]]></title>
+    <url>%2F2019%2F07%2F17%2Fnote%2FJava%2F002.PublicClass%E4%B8%8Eclass%E7%9A%84%E5%8C%BA%E5%88%AB%2F%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[主要内容 理解Java的加载与执行 可以搭建java开发环境 能够编译并运行HelloWorld 掌握Path的原理与配置 知道ClassPatch的原理与配置 明白Java中的三种注释怎么写 了解Public class与class的区别]]></content>
+      <categories>
+        <category>学习笔记</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[关于MarkDown的一些基本语法]]></title>
     <url>%2F2019%2F07%2F17%2Fnote%2FMarkDown%2F%E5%85%B3%E4%BA%8EMarkDown%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%2F</url>
     <content type="text"><![CDATA[关于MarkDown的一些基本语法MarkDown是何方神圣？Markdown,是一种能够快速标记、排版文本的语言，现在很多前端项目中的说明文件，如ReadMe等都是使用MarkDown编写的，并且很现在有多企业也在鼓励使用这种编辑方式，作为一个前端从业者，学会MarkdDown是很有必要的 MarkDown的基本语法1. 基本符号* - + . &gt; 基本上所有的MarkDown标记都是使用这几个符号进行组合或者排列，需要注意的是，如果使用基本符号开头，请在基本符号后添加一个用于分割标记符和内容的空格。 2. 标题 MarkDown标题有六种级别，从低到高依次排列，使用方法也十分简单 1234567891011# 一级标题 ### 二级标题 ##### 三级标题 ####### 四级标题 ######### 五级标题 ########### 六级标题 ###### 效果也十分的不错,但是由于我的blog会识别标题并且生成目录，如果我直接展示会妨碍到我文章目录的排版，所以在这里就不给为大家做展示了 3. 列表 MarkDown中的列表分为有序与无序两种，同时，有序列表还分为正常模式与错序模式两种 123456789101112形式一+ a+ b+ c形式二- d- e- f形式三* g* h* i 以上三种形式的效果都是一样的，只是写法不同而已 形式一 a b c 形式二 d e f 形式三 g h i 说完了无序列表，那我们接下来再来说说有序列表。有序列表的写法也十分的简单，与无序列表的区别在于前方的数字 12345678正常形式1. abc2. bcd3. cde错序效果2. fgh3. ghi5. hij 下面是效果预览 正常形式 abc bcd cde 错序效果 fgh ghi hij 嗯，我这里并没有修改错序的代码，这里的5被系统自动修正为4了。可见MarkDown还具有自动修正的功能 3.1 关于列表的用法的进阶只要学过代码的应该都知道，有些时候不同代码可以嵌套在一起实现一些特别的功能。所以说，学习代码不能够学死了，要学会灵活要运用！我在这里举例一种列表的嵌套用法，这种用法用于编写目录是十分好用的 1234567891011121314无序列表嵌套+ 123 + abc + bcd + cde+ 465+ 789有序列表嵌套1. abcd 1. abcde 2. abcde 3. abcde2. bcde3. cdef 效果也是显而易见的无序列表嵌套 123 abc bcd cde 465 789 有序列表嵌套 abcd abcde abcde abcde bcde cdef 4. 引用引用的用法和标题类似，也是分级别的，代码如下 123456&gt; 一级引用&gt;&gt; 二级引用&gt;&gt;&gt; 三级引用&gt;&gt;&gt;&gt; 四级引用&gt;&gt;&gt;&gt;&gt; 五级引用&gt;&gt;&gt;&gt;&gt;&gt; 六级引用 效果呢，是这样的 一级引用 二级引用 三级引用 四级引用 五级引用 六级引用 4.1 关于引用用法的进阶引用一般用于编写结构层次图十分有效，但是，引用的用法还有不少哦！比如，你可以给某些比较重要的句子加上引用效果，让它在文章中能够突出显示，当然，给文本上色/加粗也是一种十分有效的办法 Genius only means hard-working all one’s life. —–(Mendeleyer, Russian Chemist) 5. 特殊字体效果MarkDown中也有为字体添加效果而起到强调作用的代码，并且用法也十分简单，容易上手 5.1 文本加粗12**我就是一个例句**__我就是一个例句__ 效果如下 我就是一个例句 我就是一个例句 5.2 斜体文字12*我就是一个例句*_我就是一个例句_ 效果如下 我就是一个例句 我就是一个例句 5.3 转义所谓的转义，就是取消字符的效果，比如我想输入一个#，结果系统却把#后面的内容识别成了一级标题，那岂不是很麻烦？所以，这个时候我们就需要请出转义了 123456\\\*\+\-\`\_ 转义的写法也不难，只要在特殊符号前面加上一个反斜杠即可。 5.4 删除线删除线是一种好东西啊，有时候发表某些吐槽的时候可以用到。比如现在 1~~我还想再活五百年！~~ 我还想再活五百年！ 6. 制表对，你没看错，MarkDown也是可以用于制表的，效果也还不错 123456789101112131415161718例一|123456|123456|123456||:-|:-:|-:||abc|bcd|cde||abc|bcd|cde||abc|bcd|cde|例二|123456|123456|123456||:---|:---:|---:||abc|bcd|cde||abc|bcd|cde||abc|bcd|cde|例三123456|123456|123456:-|:-:|-:abc|bcd|cdeabc|bcd|cdeabc|bcd|cde 例一 123456 123456 123456 abc bcd cde abc bcd cde abc bcd cde 例二 123456 123456 123456 abc bcd cde abc bcd cde abc bcd cde 例子三 123456 123456 123456 abc bcd cde abc bcd cde abc bcd cde 你发现了没？这三种格式出来的效果好像都是一样的？所以说： 表格的格式不一定要对的非常齐，但是为了良好的代码风格，还是对齐了比较好 分割线后面的冒号表示对齐方式，写在左边表示左对齐，右边为右对齐，两边都写表示居中(因为一些特殊原因导致本文中表格没有对齐,博主正在查找原因！) 不知道你有没有发现以上两点呢？ 7. 分割线小葵花妈妈课堂开课了！孩子写文章标题和内容混在一起分不清怎么办？打一顿就好 当然是加上分割线啦！分割线的写法虽然有很多种,但是效果是一样的 123456789---- - -------**** * *******____ _ _______ 效果预览 PS:分割线可以由* - _（星号，减号，底线）这3个符号的至少3个符号表示，划重点，至少要3个！且不要求必须连续，在中间加上空格也是可以的 8.代码块说了这么多，不知道你有没有发现，我每次给你们展示代码的时候那一块不仅代码没有生效，而且背景颜色什么的也是不一样的。当然，我没有使用转义 用转义也不是不行，主要是我嫌麻烦，MarkDown里面专门有设计的代码展示符号，接下来就让我们来看看吧! 代码注释有两种，第一种长这样 1` echo HelloWorld ` echo HelloWorld 但是这种只适合短代码，如果是长代码一行一行加引号还不得累死？而且排版也不是十分美观。 public class HelloWorld{public static void main(String[] args){ System.out.println(&quot;Hello World&quot;) } } 你看这个排版是不是超级恶心？看起来十分难受？那有没有批量注释的办法？当然有！ 12345678910```public class HelloWorld&#123; public static void main(String[] args)&#123; System.out.println(&quot;Hello World&quot;) &#125;&#125;``` 效果如下 12345678public class HelloWorld&#123; public static void main(String[] args)&#123; System.out.println("Hello World") &#125;&#125; 只需要在代码头尾加上三个或以上 ` 即可 9.超链接如果你用MarkDown来写blog，是不是有时候需要用到跳转连接？如果是，那么以下内容可以给你提供帮助！ [百度](https://www.baidu.com/ &quot;百度一下你就知道&quot;) 效果如下PS：电脑端访问的可以通过把光标长时间停留在标题文字上的方法实现预览所预留的注释功能 百度 这样的链接，从外部看是你预留的名字，怎么样?是不是比直接放链接要好多了？当然，链接的写法也不止这一种 123[链接文字][name][name]: link &quot;Title&quot; 还有一种是这样的，不过实现的效果是相同的 10.图片虽然MarkDown是可以用txt文本编辑器来写的，但是它支持插入图片。怎么样？惊不惊喜？意不意外？ 当然，实现方式也有很多种 12345![图片的Alt标签，用来描述图片的关键词，可以不写](图片链接 &quot;鼠标悬停显示文字&quot;)![avatar](图片链接)![avatar](本地图片地址) 这种方式插入的是本地的图片，不灵活，不适用于分享，不推荐使用！ 10.1 图片进阶我们可以用base64转码工具把图片转成一段字符串，然后把字符串填到基础格式中链接的那个位置。这样就实现了将图片直接插入文档，并且可以随意分享基础用法：![avatar](data:image/png;base64,你图片的Base64编码)我们将以上代码插入文章对应位置，这个时候会发现插入的这一长串字符串会把整个文章分割开，非常影响编写文章时的体验。如果能够把大段的base64字符串放在文章末尾，然后在文章中通过一个id来调用，文章就不会被分割的这么乱了。比如： 12![avatar][base64str][base64str]:data:image/png;base64,你图片的Base64编码 引深阅读:如何将图片转换为Base64编码]]></content>
@@ -10,7 +114,7 @@
       </categories>
       <tags>
         <tag>Markdown</tag>
-        <tag>笔记</tag>
+        <tag>学习笔记</tag>
       </tags>
   </entry>
 </search>
