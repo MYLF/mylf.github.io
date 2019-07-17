@@ -109,7 +109,7 @@
 <meta property="og:description" content="关于MarkDown的一些基本语法MarkDown是何方神圣？Markdown,是一种能够快速标记、排版文本的语言，现在很多前端项目中的说明文件，如ReadMe等都是使用MarkDown编写的，并且很现在有多企业也在鼓励使用这种编辑方式，作为一个前端从业者，学会MarkdDown是很有必要的">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.baidu.com/img/bd_logo1.png?where=super">
-<meta property="og:updated_time" content="2019-07-17T02:48:49.239Z">
+<meta property="og:updated_time" content="2019-07-17T05:20:56.700Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于MarkDown的一些基本语法">
 <meta name="twitter:description" content="关于MarkDown的一些基本语法MarkDown是何方神圣？Markdown,是一种能够快速标记、排版文本的语言，现在很多前端项目中的说明文件，如ReadMe等都是使用MarkDown编写的，并且很现在有多企业也在鼓励使用这种编辑方式，作为一个前端从业者，学会MarkdDown是很有必要的">
@@ -409,7 +409,7 @@
                 
               
 
-              <time title="创建时间：2019-07-17 10:34:29 / 修改时间：10:48:49" itemprop="dateCreated datePublished" datetime="2019-07-17T10:34:29+08:00">2019-07-17</time>
+              <time title="创建时间：2019-07-17 10:34:29 / 修改时间：13:20:56" itemprop="dateCreated datePublished" datetime="2019-07-17T10:34:29+08:00">2019-07-17</time>
             </span>
           
 
@@ -651,7 +651,7 @@
 <p>你发现了没？这三种格式出来的效果好像都是一样的？所以说：</p>
 <ol>
 <li>表格的格式不一定要对的非常齐，但是为了良好的代码风格，还是对齐了比较好</li>
-<li>分割线后面的冒号表示对齐方式，写在左边表示左对齐，右边为右对齐，两边都写表示居中</li>
+<li>分割线后面的冒号表示对齐方式，写在左边表示左对齐，右边为右对齐，两边都写表示居中(因为一些特殊原因导致本文中表格没有对齐,博主正在查找原因！)</li>
 </ol>
 <p>不知道你有没有发现以上两点呢？</p>
 <h3 id="7-分割线"><a href="#7-分割线" class="headerlink" title="7. 分割线"></a>7. 分割线</h3><p>小葵花妈妈课堂开课了！孩子写文章标题和内容混在一起分不清怎么办？<del>打一顿就好</del> 当然是加上分割线啦！<br>分割线的写法虽然有很多种,但是效果是一样的</p>
@@ -723,9 +723,9 @@
         
         <div class="post-tags">
           
-            <a href="/tags/Markdown/" rel="tag"># Markdown</a>
+            <a href="/tags/Markdown/" rel="tag"><i class="fa fa-tag"></i> Markdown</a>
           
-            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
           
         </div>
       
@@ -815,6 +815,10 @@
       
       <div class="site-state-item site-state-tags">
         
+          
+            <a href="/tags/">
+          
+        
         
         
           
@@ -823,7 +827,7 @@
         
         <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">标签</span>
-        
+        </a>
       </div>
     
   </nav>
@@ -1422,6 +1426,26 @@
   
 
   
+<script>
+if ($('body').find('pre.mermaid').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      mermaid.initialize({
+        theme: 'forest',
+        logLevel: 3,
+        flowchart: { curve: 'linear' },
+        gantt: { axisFormat: '%m/%d/%Y' },
+        sequence: { actorMargin: 50 }
+      });
+    }
+  });
+}
+</script>
+
 
   
 
